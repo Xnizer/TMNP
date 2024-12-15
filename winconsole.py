@@ -51,7 +51,9 @@ def get_screen_buffer_info():
 
 
 def write(string):
-    return kernel32.WriteConsoleW(stdout, string, len(string))
+    lpNumberOfCharsWritten = DWORD(0)
+    kernel32.WriteConsoleW(stdout, string, len(string), byref(lpNumberOfCharsWritten))
+    return lpNumberOfCharsWritten.value
 
 
 def read():
