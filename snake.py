@@ -18,6 +18,13 @@ class GameState(Enum):
 
 
 class SnakeGame:
+    __opposite_moves = {
+        MovingDir.LEFT: MovingDir.RIGHT,
+        MovingDir.RIGHT: MovingDir.LEFT,
+        MovingDir.UP: MovingDir.DOWN,
+        MovingDir.DOWN: MovingDir.UP
+    }
+
     def __init__(self, size):
         self.__size = size
         self.__snake = [Point(1, 0), Point(0, 0)]
@@ -31,8 +38,9 @@ class SnakeGame:
             return
         # process moving direction
         if hasattr(MovingDir, input.upper()):
-            # TODO: reject opposite directions
-            self.__moving_dir = MovingDir(input)
+            direction = MovingDir(input)
+            if direction is not SnakeGame.__opposite_moves[self.__moving_dir]:
+                self.__moving_dir = direction
 
     def advance(self):
         # Only advance game when it is running.
