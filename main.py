@@ -1,6 +1,6 @@
 import drawing
 from data import Point
-from terminal import Terminal
+from core.terminal.terminal import Terminal
 from snake import SnakeGame, GameState
 from time import sleep
 
@@ -17,7 +17,8 @@ def main():
     while game.get_state() == GameState.RUNNING:
         # -------------- update --------------- #
         player_input = terminal.next_keypress()
-        game.process_input(player_input)
+        if (player_input is not None):
+            game.process_input(player_input.value)
         game.advance()
         
         # --------------- draw ---------------- #
