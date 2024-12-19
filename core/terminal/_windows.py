@@ -16,8 +16,8 @@ class WindowsTerminalWrapper(TerminalWrapperBase):
     
 
     def write(self, row: int, col: int, text: str):
-        set_cursor_position((row, col))
-        write_console(str)
+        set_cursor_position(row, col)
+        write_console(text)
     
 
     def clear(self, fill: str = ' '):
@@ -43,7 +43,7 @@ class WindowsTerminalWrapper(TerminalWrapperBase):
             elif key == b'K': # Left arrow
                 return KeyboardKey.LEFT
             elif key == b'M': # Right arrow
-                return KeyboardKey.UP
+                return KeyboardKey.RIGHT
             else:
                 return None # TODO: handle more special function keys
         else:
