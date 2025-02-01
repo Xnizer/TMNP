@@ -51,10 +51,9 @@ class Terminal:
         # 'fill' must be 1 character
         if not isinstance(fill ,str) or len(fill) != 1:
             fill = ' '
-            
+
         # Fill the entire screen buffer
-        buffer_size = self.__size.size
-        self.__terminal.write(0, 0, fill * buffer_size)
+        self.__terminal.clear(fill)
 
 
     def update_screen(self):

@@ -53,7 +53,7 @@ def fill_console_output_characters(fill: str = ' '):
     buffer_info = get_screen_buffer_info()
     buffer_size = DWORD(buffer_info.dwSize.X * buffer_info.dwSize.Y)
     characters_written = ULONG(0) 
-    kernel32.FillConsoleOutputCharacterW(STD_OUTPUT_HANDLE, WCHAR(fill), buffer_size, _COORD(0, 0), byref(characters_written))
+    kernel32.FillConsoleOutputCharacterW(stdout, WCHAR(fill), buffer_size, _COORD(0, 0), byref(characters_written))
     return characters_written.value
 
 
@@ -61,7 +61,7 @@ def fill_console_output_attribute():
     buffer_info = get_screen_buffer_info()
     buffer_size = DWORD(buffer_info.dwSize.X * buffer_info.dwSize.Y)
     characters_written = ULONG(0) 
-    kernel32.FillConsoleOutputAttribute(STD_OUTPUT_HANDLE, buffer_info.wAttributes, buffer_size, _COORD(0, 0), byref(characters_written))
+    kernel32.FillConsoleOutputAttribute(stdout, buffer_info.wAttributes, buffer_size, _COORD(0, 0), byref(characters_written))
     return characters_written.value
 
 
