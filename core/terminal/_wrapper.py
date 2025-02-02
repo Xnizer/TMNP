@@ -9,6 +9,9 @@ class KeyboardKey(Enum):
     LEFT = 'LEFT'
     RIGHT = 'RIGHT'
 
+    ENTER = 'ENTER'
+    ESC = 'ECS'
+
     # TODO: add more keys
 
 

@@ -1,5 +1,11 @@
+import sys
+
+if sys.platform == "win32":
+    from ._windows import WindowsTerminalWrapper as TerminalWrapper
+else:
+    from ._unix import UnixTerminal as TerminalWrapper
+
 from data import Point
-from ._windows import WindowsTerminalWrapper as TerminalWrapper
 
 
 class Terminal:
