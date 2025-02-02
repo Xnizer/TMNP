@@ -25,6 +25,10 @@ class TerminalWrapperBase(ABC):
         pass
 
     @abstractmethod
+    def cursor(self, visible: bool):
+        pass
+
+    @abstractmethod
     def write(self, row: int, col: int, text: str):
         pass
 

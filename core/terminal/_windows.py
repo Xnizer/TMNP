@@ -14,6 +14,10 @@ class WindowsTerminalWrapper(TerminalWrapperBase):
         size = get_screen_buffer_info().dwSize
         return TerminalSize(size.X, size.Y)
     
+    
+    def cursor(self, visible):
+        set_cursor_visibility(visible)
+    
 
     def write(self, row: int, col: int, text: str):
         set_cursor_position(row, col)
